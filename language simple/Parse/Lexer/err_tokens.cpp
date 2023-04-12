@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <vector>
+#include <format>
 #include "tokenizer.h"
 #include "err_tokens.h"
 #include "../../Util/smallfunc.h"
@@ -22,6 +23,7 @@ void new_line(int& line, const std::vector<TOKEN>& TOKENS)
     int paren_amnt = 0;
     int curly_amnt = 0;
 
+    TOKEN* last_token = nullptr;
 
     // reading those tokens
     for (TOKEN token : TOKENS)
@@ -32,6 +34,11 @@ void new_line(int& line, const std::vector<TOKEN>& TOKENS)
             paren_amnt++;
         if (token.type == "LEFT_CURLY_BRACE" || token.type == "RIGHT_CURLY_BRACE")
             curly_amnt++;
+
+        if (last_token != nullptr)
+            if (last_token->type == token.type)
+                display_err(line, std::format("Invalid expression; Double type {0}",token.type).c_str());
+        last_token = &token;
     }
 
     if (!is_even(quote_amnt))
