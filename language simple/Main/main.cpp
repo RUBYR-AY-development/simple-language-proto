@@ -22,4 +22,5 @@ int main(int argc, char* argv[])
 {
 	// initialize the interface
 	console::init(argc, argv);
+
 }

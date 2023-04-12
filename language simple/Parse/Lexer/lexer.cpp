@@ -9,6 +9,7 @@
 #include "symbols.h"
 #include "token.h"
 #include "err_tokens.h"
+#include "syntax_tok.h"
 
 constexpr bool PRINT_TOKENS = true;
 constexpr bool DEBUG_MODE = false; // error checking
@@ -93,8 +94,12 @@ LEXER::LEXER(std::vector<std::string>& LINES)
 	}
 	this->ADD_TOKEN(TOKEN_TYPES::_EOF_);
 
+	// final checks before finish
 	if (!DEBUG_MODE)
 		err_tokens::handle(this->TOKENS);
+
+	syntax_tok::handle(this->TOKENS);
+
 	if (PRINT_TOKENS)
 		for (auto x : this->TOKENS)
 			std::cout << "[" << x.type << "] " << x.value << std::endl;

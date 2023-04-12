@@ -133,12 +133,14 @@
     <ClCompile Include="Parse\Lexer\err_tokens.cpp" />
     <ClCompile Include="Parse\Lexer\lexer.cpp" />
     <ClCompile Include="Parse\Lexer\mini_token.cpp" />
+    <ClCompile Include="Parse\Lexer\syntax_tok.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Interface\console.h" />
     <ClInclude Include="Main\controller.h" />
     <ClInclude Include="Parse\Lexer\err_tokens.h" />
     <ClInclude Include="Parse\Lexer\symbols.h" />
+    <ClInclude Include="Parse\Lexer\syntax_tok.h" />
     <ClInclude Include="Parse\Lexer\token.h" />
     <ClInclude Include="Parse\Lexer\tokenizer.h" />
     <ClInclude Include="Util\smallfunc.h" />
