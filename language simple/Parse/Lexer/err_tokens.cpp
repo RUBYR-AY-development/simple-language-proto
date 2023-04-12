@@ -48,6 +48,7 @@ void new_line(int& line, const std::vector<TOKEN>& TOKENS)
     if (!is_even(curly_amnt))
         display_err(line, "Missing curly brace");
 
+    delete last_token;
 }
 
 void err_tokens::handle(std::vector<TOKEN>& TOKENS)
