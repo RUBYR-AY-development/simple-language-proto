@@ -23,7 +23,7 @@ void new_line(int& line, const std::vector<TOKEN>& TOKENS)
     int paren_amnt = 0;
     int curly_amnt = 0;
 
-    TOKEN* last_token = nullptr;
+    TOKEN last_token = TOKEN{};
 
     // reading those tokens
     for (TOKEN token : TOKENS)
@@ -35,10 +35,9 @@ void new_line(int& line, const std::vector<TOKEN>& TOKENS)
         if (token.type == "LEFT_CURLY_BRACE" || token.type == "RIGHT_CURLY_BRACE")
             curly_amnt++;
 
-        if (last_token != nullptr)
-            if (last_token->type == token.type)
-                display_err(line, std::format("Invalid expression; Double type {0}",token.type).c_str());
-        last_token = &token;
+        if (last_token.type == token.type)
+            display_err(line, std::format("Invalid expression; Double type {0}",token.type).c_str());
+        last_token = token;
     }
 
     if (!is_even(quote_amnt))
@@ -47,8 +46,6 @@ void new_line(int& line, const std::vector<TOKEN>& TOKENS)
         display_err(line, "Missing parenthesis");
     if (!is_even(curly_amnt))
         display_err(line, "Missing curly brace");
-
-    delete last_token;
 }
 
 void err_tokens::handle(std::vector<TOKEN>& TOKENS)
