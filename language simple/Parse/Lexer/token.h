@@ -1,8 +1,5 @@
 #pragma once
-#include <iostream>
-#include <unordered_map>
-#include <set>
-#include <vector>
+#include <string>
 
 enum class TOKEN_TYPES
 {

@@ -1,9 +1,8 @@
 #pragma once
 #include <iostream>
 #include <vector>
-#include <set>
-#include "token.h"
+#include "../Lexer/token.h"
 
-namespace syntax_tok {
+namespace expr_main {
 	void handle(std::vector<TOKEN>& TOKENS);
 }

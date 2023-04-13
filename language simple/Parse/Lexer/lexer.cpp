@@ -1,6 +1,7 @@
 /*
 * Main part of the lexer
 * code for 'LEXER' class functions
+* Controls the lexer and is main entry point of lexer
 */
 
 #include <iostream>
