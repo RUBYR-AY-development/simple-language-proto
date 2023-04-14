@@ -14,7 +14,7 @@
 #include "syntax_tokens.h"
 #include "../../Util/smallfunc.h"
 
-// small functions instead of repeating conditions
+// small functions instead of repeating conditions xd
 bool WITHIN_ANGLE_BRACKETS(int& token_pos, std::vector<TOKEN>& TOKENS)
 {
     // < >
@@ -28,7 +28,6 @@ bool WITHIN_ANGLE_BRACKETS(int& token_pos, std::vector<TOKEN>& TOKENS)
 
 void syntax_tok::handle(std::vector<TOKEN>& TOKENS)
 {
-    // will call 'new_line' for each line
     int line = 1; // only for display_err
 
     for (int token_pos = 0; token_pos < TOKENS.size(); token_pos++)

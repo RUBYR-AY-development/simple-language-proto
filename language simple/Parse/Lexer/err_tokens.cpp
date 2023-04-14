@@ -49,7 +49,6 @@ void err_tokens::handle(std::vector<TOKEN>& TOKENS)
     std::vector<TOKEN> cur_toks;
     int line = 1;
 
-    // will call 'new_line' for each line
     for (TOKEN token : TOKENS)
     {
         if (token.type == "EOF")
