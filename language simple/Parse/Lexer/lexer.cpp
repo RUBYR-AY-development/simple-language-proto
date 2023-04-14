@@ -17,7 +17,7 @@ constexpr bool DEBUG_MODE = false; // error checking
 
 void LEXER::ADD_CUR_TOK()
 {
-	if (this->CUR_TOK != "" && !this->ignore_all_tokens)
+	if (this->CUR_TOK != "")
 	{
 		if (KEYWORD_SYMBOLS.count(this->CUR_TOK))
 		{

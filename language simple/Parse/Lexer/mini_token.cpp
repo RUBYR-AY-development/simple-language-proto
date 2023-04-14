@@ -23,8 +23,8 @@ void LEXER::ADD_TOKEN(TOKEN_TYPES TYPE)
 		}
 		case TOKEN_TYPES::LEFT_PAREN:
 		{
-			if (!this->ignore_all_tokens)
-			{
+			//if (!this->ignore_all_tokens)
+			//{
 				if (!this->in_string)
 				{
 					this->ADD_CUR_TOK();
@@ -32,13 +32,13 @@ void LEXER::ADD_TOKEN(TOKEN_TYPES TYPE)
 				}
 				else
 					this->CUR_TOK += "(";
-			}
+			//}
 			break;
 		}
 		case TOKEN_TYPES::RIGHT_PAREN:
 		{
-			if (!this->ignore_all_tokens)
-			{
+			//if (!this->ignore_all_tokens)
+			//{
 				if (!this->in_string)
 				{
 					this->ADD_CUR_TOK();
@@ -46,13 +46,13 @@ void LEXER::ADD_TOKEN(TOKEN_TYPES TYPE)
 				}
 				else
 					this->CUR_TOK += ")";
-			}
+			//}
 			break;
 		}
 		case TOKEN_TYPES::QUOTATION_DOUBLE:
 		{
-			if (!this->ignore_all_tokens)
-			{
+			//if (!this->ignore_all_tokens)
+			//{
 				if (this->in_string)
 				{
 					// string completed
@@ -61,21 +61,21 @@ void LEXER::ADD_TOKEN(TOKEN_TYPES TYPE)
 				}
 				this->in_string = !this->in_string;
 				this->TOKENS.push_back(TOKEN{ "QUOTATION_DOUBLE","\"" });
-			}
+			//}
 			break;
 		}
 		case TOKEN_TYPES::QUOTATION_SINGLE:
 		{
-			if (!this->ignore_all_tokens)
-			{
+			//if (!this->ignore_all_tokens)
+			//{
 				this->TOKENS.push_back(TOKEN{ "QUOTATION_SINGLE","'" });
-			}
+			//}
 			break;
 		}
 		case TOKEN_TYPES::DOT:
 		{
-			if (!this->ignore_all_tokens)
-			{
+			//if (!this->ignore_all_tokens)
+			//{
 				if (!this->in_string)
 				{
 					this->ADD_CUR_TOK();
@@ -83,26 +83,26 @@ void LEXER::ADD_TOKEN(TOKEN_TYPES TYPE)
 				}
 				else
 					this->CUR_TOK += ".";
-			}
+			//}
 			break;
 		}
 		case TOKEN_TYPES::SEMICOLON:
 		{
-			if (!this->ignore_all_tokens)
-			{
+			//if (!this->ignore_all_tokens)
+			//{
 				if (!this->in_string)
 				{
 					this->TOKENS.push_back(TOKEN{ "SEMICOLON",";" });
 				}
 				else
 					this->CUR_TOK += ";";
-			}
+			//}
 			break;
 		}
 		case TOKEN_TYPES::COLON:
 		{
-			if (!this->ignore_all_tokens)
-			{
+			//if (!this->ignore_all_tokens)
+			//{
 				if (!this->in_string)
 				{
 					this->ADD_CUR_TOK();
@@ -110,13 +110,13 @@ void LEXER::ADD_TOKEN(TOKEN_TYPES TYPE)
 				}
 				else
 					this->CUR_TOK += ":";
-			}
+			//}
 			break;
 		}
 		case TOKEN_TYPES::PLUS:
 		{
-			if (!this->ignore_all_tokens)
-			{
+			//if (!this->ignore_all_tokens)
+			//{
 				if (!this->in_string)
 				{
 					if (this->TOKENS.back() == TOKEN{ "PLUS","+" })
@@ -132,13 +132,13 @@ void LEXER::ADD_TOKEN(TOKEN_TYPES TYPE)
 				}
 				else
 					this->CUR_TOK += "+";
-			}
+			//}
 			break;
 		}
 		case TOKEN_TYPES::MINUS:
 		{
-			if (!this->ignore_all_tokens)
-			{
+			//if (!this->ignore_all_tokens)
+			//{
 				if (!this->in_string)
 				{
 					if (this->TOKENS.back() == TOKEN{ "MINUS","-" })
@@ -154,13 +154,13 @@ void LEXER::ADD_TOKEN(TOKEN_TYPES TYPE)
 				}
 				else
 					this->CUR_TOK += "-";
-			}
+			//}
 			break;
 		}
 		case TOKEN_TYPES::STAR:
 		{
-			if (!this->ignore_all_tokens)
-			{
+			//if (!this->ignore_all_tokens)
+			//{
 				if (!this->in_string)
 				{
 					this->ADD_CUR_TOK();
@@ -168,7 +168,7 @@ void LEXER::ADD_TOKEN(TOKEN_TYPES TYPE)
 				}
 				else
 					this->CUR_TOK += "*";
-			}
+			//}
 			break;
 		}
 		case TOKEN_TYPES::FRONT_SLASH:
@@ -178,10 +178,7 @@ void LEXER::ADD_TOKEN(TOKEN_TYPES TYPE)
 				// PREVIOUS TOKEN CHECK
 				if (this->TOKENS.back() == TOKEN{ "FRONT_SLASH","/" })
 				{
-					// check if its a comment
-					this->ignore_all_tokens = true;
-	
-					// get rid of the previous frontslash
+					this->position = this->TXT.size() + 1;
 					this->TOKENS.pop_back();
 				}
 				else
@@ -196,22 +193,19 @@ void LEXER::ADD_TOKEN(TOKEN_TYPES TYPE)
 		}
 		case TOKEN_TYPES::GREATER_THAN:
 		{
-			if (!this->ignore_all_tokens)
+			if (!this->in_string)
 			{
-				if (!this->in_string)
-				{
-					this->ADD_CUR_TOK();
-					this->TOKENS.push_back(TOKEN{ "GREATER_THAN",">" });
-				}
-				else
-					this->CUR_TOK += ">";
+				this->ADD_CUR_TOK();
+				this->TOKENS.push_back(TOKEN{ "GREATER_THAN",">" });
 			}
+			else
+				this->CUR_TOK += ">";
 			break;
 		}
 		case TOKEN_TYPES::LESS_THAN:
 		{
-			if (!this->ignore_all_tokens)
-			{
+			//if (!this->ignore_all_tokens)
+			//{
 				if (!this->in_string)
 				{
 					this->ADD_CUR_TOK();
@@ -219,13 +213,13 @@ void LEXER::ADD_TOKEN(TOKEN_TYPES TYPE)
 				}
 				else
 					this->CUR_TOK += "<";
-			}
+			//}
 			break;
 		}
 		case TOKEN_TYPES::EQUAL:
 		{
-			if (!this->ignore_all_tokens)
-			{
+			//if (!this->ignore_all_tokens)
+			//{
 				if (!this->in_string)
 				{
 					auto bacc = this->TOKENS.back();
@@ -255,13 +249,13 @@ void LEXER::ADD_TOKEN(TOKEN_TYPES TYPE)
 				}
 				else
 					this->CUR_TOK += "=";
-			}
+			//}
 			break;
 		}
 		case TOKEN_TYPES::COMMA:
 		{
-			if (!this->ignore_all_tokens)
-			{
+			//if (!this->ignore_all_tokens)
+			//{
 				if (!this->in_string)
 				{
 					this->ADD_CUR_TOK();
@@ -269,13 +263,13 @@ void LEXER::ADD_TOKEN(TOKEN_TYPES TYPE)
 				}
 				else
 					this->CUR_TOK += ",";
-			}
+			//}
 			break;
 		}
 		case TOKEN_TYPES::LEFT_CURLY_BRACE:
 		{
-			if (!this->ignore_all_tokens)
-			{
+			//if (!this->ignore_all_tokens)
+			//{
 				if (!this->in_string)
 				{
 					this->ADD_CUR_TOK();
@@ -283,13 +277,13 @@ void LEXER::ADD_TOKEN(TOKEN_TYPES TYPE)
 				}
 				else
 					this->CUR_TOK += "{";
-			}
+			//}
 			break;
 		}
 		case TOKEN_TYPES::RIGHT_CURLY_BRACE:
 		{
-			if (!this->ignore_all_tokens)
-			{
+			//if (!this->ignore_all_tokens)
+			//{
 				if (!this->in_string)
 				{
 					this->ADD_CUR_TOK();
@@ -297,7 +291,7 @@ void LEXER::ADD_TOKEN(TOKEN_TYPES TYPE)
 				}
 				else
 					this->CUR_TOK += "}";
-			}
+			//}
 			break;
 		}
 	}

@@ -21,7 +21,6 @@ class LEXER
 		int position = 0;
 		int cycle = 0;
 		bool in_string = false;
-		bool ignore_all_tokens = false; // used for comments
 
 
 		char CURRENT()
@@ -39,7 +38,6 @@ class LEXER
 		void ADVANCE_NEXT_TXT()
 		{
 			this->ADD_CUR_TOK();
-			this->ignore_all_tokens = false;
 			this->position = 0;
 			this->cycle++;
 			if (this->cycle < this->LINES.size())
