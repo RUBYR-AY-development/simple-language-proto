@@ -14,13 +14,13 @@ constexpr raw_str LANG_INFO = "[no name] Language; Version: 0 (IN-DEVELOPMENT)";
 
 
 // prints the info about the program
-static void print_info()
+void print_info()
 {
 	std::cout << LANG_INFO << std::endl;
 }
 
 // input reciever
-static void recieve_inputs()
+void recieve_inputs()
 {
 	std::vector<std::string> inputs;
 	std::string INPUT_BUF;

@@ -15,7 +15,7 @@
 #include "../../Util/smallfunc.h"
 
 // small functions instead of repeating conditions
-inline bool WITHIN_ANGLE_BRACKETS(int& token_pos, std::vector<TOKEN>& TOKENS)
+bool WITHIN_ANGLE_BRACKETS(int& token_pos, std::vector<TOKEN>& TOKENS)
 {
     // < >
     if ((token_pos > 0 && token_pos < TOKENS.size()) &&
