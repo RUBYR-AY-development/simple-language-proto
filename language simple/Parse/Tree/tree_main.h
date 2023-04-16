@@ -3,6 +3,6 @@
 #include <vector>
 #include "../Lexer/token.h"
 
-namespace expr_main {
+namespace tree_main {
 	void handle(std::vector<TOKEN>& TOKENS);
 }

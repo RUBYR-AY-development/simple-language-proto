@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -130,7 +130,9 @@
   <ItemGroup>
     <ClCompile Include="Interface\console.cpp" />
     <ClCompile Include="Main\main.cpp" />
-    <ClCompile Include="Parse\Expression\expr_main.cpp" />
+    <ClCompile Include="Parse\Tree\create_tree.cpp" />
+    <ClCompile Include="Parse\Tree\err_handle_tree.cpp" />
+    <ClCompile Include="Parse\Tree\tree_main.cpp" />
     <ClCompile Include="Parse\Lexer\err_tokens.cpp" />
     <ClCompile Include="Parse\Lexer\lexer.cpp" />
     <ClCompile Include="Parse\Lexer\mini_token.cpp" />
@@ -141,8 +143,9 @@
   <ItemGroup>
     <ClInclude Include="Interface\console.h" />
     <ClInclude Include="Main\controller.h" />
-    <ClInclude Include="Parse\Expression\expression.h" />
-    <ClInclude Include="Parse\Expression\expr_main.h" />
+    <ClInclude Include="Parse\Tree\create_tree.h" />
+    <ClInclude Include="Parse\Tree\err_handle_tree.h" />
+    <ClInclude Include="Parse\Tree\tree_main.h" />
     <ClInclude Include="Parse\Lexer\err_tokens.h" />
     <ClInclude Include="Parse\Lexer\symbols.h" />
     <ClInclude Include="Parse\Lexer\syntax_tok.h" />

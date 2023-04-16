@@ -39,7 +39,13 @@
     <ClCompile Include="Parse\Lexer\syntax_tokens.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Parse\Expression\expr_main.cpp">
+    <ClCompile Include="Parse\Tree\tree_main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Parse\Tree\create_tree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Parse\Tree\err_handle_tree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -74,10 +80,13 @@
     <ClInclude Include="Parse\Lexer\syntax_tokens.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Parse\Expression\expr_main.h">
+    <ClInclude Include="Parse\Tree\tree_main.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Parse\Expression\expression.h">
+    <ClInclude Include="Parse\Tree\create_tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Parse\Tree\err_handle_tree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

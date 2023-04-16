@@ -11,6 +11,7 @@
 #include "token.h"
 #include "err_tokens.h"
 #include "syntax_tok.h"
+#include "../../Util/smallfunc.h"
 
 constexpr bool PRINT_TOKENS = true;
 constexpr bool DEBUG_MODE = false; // error checking
@@ -34,6 +35,17 @@ void LEXER::ADD_CUR_TOK()
 
 
 		// if everything else is false
+		if (string_is_integer(this->CUR_TOK)) {
+			this->TOKENS.push_back(TOKEN{ "INTEGER",this->CUR_TOK });
+			this->CUR_TOK = "";
+			return;
+		}
+		if (string_is_float(this->CUR_TOK)) {
+			this->TOKENS.push_back(TOKEN{ "FLOAT",this->CUR_TOK });
+			this->CUR_TOK = "";
+			return;
+		}
+
 		this->TOKENS.push_back(TOKEN{ "IDENTIFIER",this->CUR_TOK });
 		this->CUR_TOK = "";
 		return;
@@ -58,7 +70,13 @@ LEXER::LEXER(std::vector<std::string>& LINES)
 				case ')': {this->ADD_TOKEN(TOKEN_TYPES::RIGHT_PAREN); break; }
 				case '"': {this->ADD_TOKEN(TOKEN_TYPES::QUOTATION_DOUBLE); break; }
 				case '\'': {this->ADD_TOKEN(TOKEN_TYPES::QUOTATION_SINGLE); break; }
-				case '.': {this->ADD_TOKEN(TOKEN_TYPES::DOT); break; }
+				case '.': {
+					if (!string_is_integer(this->CUR_TOK))
+						this->ADD_TOKEN(TOKEN_TYPES::DOT);
+					else
+						this->CUR_TOK += this->CURRENT();
+					break;
+				}
 				case ';': {this->ADD_TOKEN(TOKEN_TYPES::SEMICOLON); break; }
 				case ':': {this->ADD_TOKEN(TOKEN_TYPES::COLON); break; }
 				case '+': {this->ADD_TOKEN(TOKEN_TYPES::PLUS); break; }

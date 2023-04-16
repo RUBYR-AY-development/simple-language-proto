@@ -92,6 +92,7 @@ void LEXER::ADD_TOKEN(TOKEN_TYPES TYPE)
 			//{
 				if (!this->in_string)
 				{
+					this->ADD_CUR_TOK();
 					this->TOKENS.push_back(TOKEN{ "SEMICOLON",";" });
 				}
 				else
