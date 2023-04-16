@@ -132,6 +132,7 @@
     <ClCompile Include="Main\main.cpp" />
     <ClCompile Include="Parse\Tree\create_tree.cpp" />
     <ClCompile Include="Parse\Tree\err_handle_tree.cpp" />
+    <ClCompile Include="Parse\Tree\statements\var\var.decl.cpp" />
     <ClCompile Include="Parse\Tree\tree_main.cpp" />
     <ClCompile Include="Parse\Lexer\err_tokens.cpp" />
     <ClCompile Include="Parse\Lexer\lexer.cpp" />
@@ -145,6 +146,7 @@
     <ClInclude Include="Main\controller.h" />
     <ClInclude Include="Parse\Tree\create_tree.h" />
     <ClInclude Include="Parse\Tree\err_handle_tree.h" />
+    <ClInclude Include="Parse\Tree\statements\var\var_decl.h" />
     <ClInclude Include="Parse\Tree\tree_main.h" />
     <ClInclude Include="Parse\Lexer\err_tokens.h" />
     <ClInclude Include="Parse\Lexer\symbols.h" />

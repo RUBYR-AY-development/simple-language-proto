@@ -48,6 +48,9 @@
     <ClCompile Include="Parse\Tree\err_handle_tree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Parse\Tree\statements\var\var.decl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Interface\console.h">
@@ -87,6 +90,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Parse\Tree\err_handle_tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Parse\Tree\statements\var\var_decl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

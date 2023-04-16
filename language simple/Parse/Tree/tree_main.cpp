@@ -27,8 +27,10 @@ void tree_main::handle(std::vector<TOKEN>& TOKENS)
 			break;
 		if (token.type == "EOL" || token.type == "SEMICOLON")
 		{
-			trees.push_back(new_line(line, cur_toks));
-			cur_toks.clear();
+			if (!cur_toks.empty()) { // crash fix
+				trees.push_back(new_line(line, cur_toks));
+				cur_toks.clear();
+			}
 			line++;
 		}
 		else

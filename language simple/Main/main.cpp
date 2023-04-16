@@ -11,6 +11,10 @@
 
 void controller::pass_input(std::vector<std::string> LINES)
 {
+	if (LINES.empty()) { // only EOF
+		std::cout << "Unable to run interpreter\n";
+		return;
+	}
 	std::cout << "PARSING..\n";
 	// lexer
 	LEXER* lexer = new LEXER(LINES);
